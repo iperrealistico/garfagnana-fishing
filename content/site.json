@@ -1,4 +1,10 @@
 {
+    "seo": {
+        "title_template": "%s | Garfagnana Fishing",
+        "default_description": "Scopri i migliori spot di pesca in Garfagnana. Zone regolamentate ZRS, guide esperte e app Hooking.",
+        "og_image": "/images/hero/hero-fishing.jpg",
+        "keywords": "pesca, garfagnana, trota, spinning, mosca, toscana, turismo"
+    },
     "translations": {
         "it": {
             "prenota-nav": "Prenota online",

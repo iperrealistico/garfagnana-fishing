@@ -41,7 +41,14 @@ export interface SiteContent {
         website: string;
         image: string;
     }[];
+    seo: {
+        title_template: string;
+        default_description: string;
+        og_image: string;
+        keywords: string;
+    };
 }
+
 
 export const content = siteData as SiteContent;
 

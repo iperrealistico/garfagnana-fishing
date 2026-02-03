@@ -37,13 +37,14 @@ export default function Header({ dict, lang }: { dict: TranslationDictionary, la
     };
 
     const navItems = [
-        { id: 'prenota', label: dict['prenota-nav'] },
-        { id: 'dove-pescare', label: dict['dove-nav'] },
-        { id: 'chi-siamo', label: dict['chi-nav'] },
-        { id: 'video', label: dict['video-nav'] },
-        { id: 'servizi', label: dict['servizi-nav'] },
-        { id: 'come-raggiungerci', label: dict['come-nav'] },
+        { id: 'prenota', label: dict['prenota-nav'], icon: 'fa-calendar-check' },
+        { id: 'dove-pescare', label: dict['dove-nav'], icon: 'fa-map-marked-alt' },
+        { id: 'chi-siamo', label: dict['chi-nav'], icon: 'fa-users' },
+        { id: 'video', label: dict['video-nav'], icon: 'fa-video' },
+        { id: 'servizi', label: dict['servizi-nav'], icon: 'fa-concierge-bell' },
+        { id: 'come-raggiungerci', label: dict['come-nav'], icon: 'fa-road' },
     ];
+
 
     return (
         <>
@@ -66,9 +67,11 @@ export default function Header({ dict, lang }: { dict: TranslationDictionary, la
                                 }
                             }}
                         >
+                            <i className={`fas ${item.icon}`} style={{ marginRight: '8px' }}></i>
                             {item.label}
                         </Link>
                     ))}
+
                 </nav>
 
                 <div className={`burger-menu ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -91,9 +94,11 @@ export default function Header({ dict, lang }: { dict: TranslationDictionary, la
                             el?.scrollIntoView({ behavior: 'smooth' });
                         }}
                     >
+                        <i className={`fas ${item.icon}`} style={{ marginRight: '8px' }}></i>
                         {item.label}
                     </Link>
                 ))}
+
             </nav>
         </>
     );

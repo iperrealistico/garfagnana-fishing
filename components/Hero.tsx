@@ -24,30 +24,23 @@ export default function Hero({ dict, lang }: { dict: TranslationDictionary, lang
 
                 <div className="hero-cta-group">
                     <Link href="#dove-pescare" className="cta-button floating-element" style={{ animationDelay: '0s' }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                        </svg>
+                        <i className="fas fa-map-marker-alt" style={{ fontSize: '1.2rem' }}></i>
                         <span>{dict['cta-dove']}</span>
                     </Link>
                     <Link href="#chi-siamo" className="cta-button floating-element" style={{ animationDelay: '0.5s' }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                        </svg>
+                        <i className="fas fa-users" style={{ fontSize: '1.2rem' }}></i>
                         <span>{dict['cta-chi']}</span>
                     </Link>
                     <Link href="#servizi" className="cta-button floating-element" style={{ animationDelay: '1s' }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                        </svg>
+                        <i className="fas fa-bed" style={{ fontSize: '1.2rem' }}></i>
                         <span>{dict['cta-vitto']}</span>
                     </Link>
                     <Link href="#video" className="cta-button floating-element" style={{ animationDelay: '1.5s' }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-                        </svg>
+                        <i className="fas fa-play" style={{ fontSize: '1.2rem' }}></i>
                         <span>{dict['cta-video']}</span>
                     </Link>
                 </div>
+
             </div>
         </section>
     );
