@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://garfagnana-fishing.vercel.app/sitemap.xml

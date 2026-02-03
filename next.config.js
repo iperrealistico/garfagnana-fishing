@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    poweredByHeader: false,
     images: {
         unoptimized: true,
         remotePatterns: [
@@ -15,11 +16,12 @@ const nextConfig = {
     },
     // Adding these to help bypass non-critical TS/Lint issues on Vercel
     typescript: {
-        ignoreBuildErrors: false, // Keep false to ensure we fix real errors, but can set to true if still blocked by environment issues
+        ignoreBuildErrors: false,
     },
     eslint: {
         ignoreDuringBuilds: true,
     }
 };
+
 
 module.exports = nextConfig;
