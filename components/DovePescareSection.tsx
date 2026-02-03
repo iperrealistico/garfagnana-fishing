@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { TranslationDictionary, getGlobalContent } from '@/lib/content';
 import AnimateOnScroll from './AnimateOnScroll';
 import { cn } from '@/lib/utils';
@@ -10,9 +10,8 @@ export default function DovePescareSection({ dict }: { dict: TranslationDictiona
     const globalContent = getGlobalContent();
 
     const togglePanel = (panelId: string) => {
-        setActivePanel(prev => {
+        setActivePanel((prev: string | null) => {
             const newVal = prev === panelId ? null : panelId;
-            // Scroll logic could go here if needed, keeping it simple for now
             if (newVal) {
                 setTimeout(() => {
                     const el = document.getElementById(`panel-${newVal}`);
@@ -68,7 +67,6 @@ export default function DovePescareSection({ dict }: { dict: TranslationDictiona
                 {/* Grid ZRS Cards */}
                 <div className="grid">
                     <AnimateOnScroll animation="zoom-in" className="card zrs-card" >
-                        {/* We use div onClick to match existing behavior, but for a11y we should add role button */}
                         <div role="button" tabIndex={0} onClick={() => togglePanel('alto-serchio')} onKeyDown={(e) => e.key === 'Enter' && togglePanel('alto-serchio')}>
                             <div className="img-container" style={{ height: '200px' }}>
                                 <img src="/images/zones/zrs-alto-serchio-aerial.jpg" alt="Alto Serchio" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} />

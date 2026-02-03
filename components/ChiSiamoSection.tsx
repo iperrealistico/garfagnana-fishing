@@ -1,3 +1,4 @@
+import React from 'react';
 import { TranslationDictionary } from '@/lib/content';
 import AnimateOnScroll from './AnimateOnScroll';
 

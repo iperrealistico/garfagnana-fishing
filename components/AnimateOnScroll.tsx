@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, ReactNode } from 'react';
 
 interface Props {
-    children: React.ReactNode;
+    children: ReactNode;
     animation?: 'fade-up' | 'fade-left' | 'fade-right' | 'zoom-in';
     delay?: number;
     className?: string;
@@ -26,7 +26,6 @@ export default function AnimateOnScroll({ children, animation = 'fade-up', delay
         if (element) {
             if (delay) {
                 element.style.transitionDelay = `${delay}s`;
-                // Also set animation-delay just in case there are mixed CSS rules
                 element.style.animationDelay = `${delay}s`;
             }
             observer.observe(element);
