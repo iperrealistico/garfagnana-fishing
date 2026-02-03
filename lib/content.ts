@@ -14,11 +14,26 @@ export interface SiteContent {
         en: TranslationDictionary;
     };
     videos: string[];
-    zrs_maps: {
-        alto_serchio: { iframe_src: string, pdf_map: string, pdf_rules: string };
-        isola_santa: { iframe_src: string };
-        incubatoio: { iframe_src: string };
+    settings: {
+        debug_mode: boolean;
+        storage_mode: 'github' | 'blob';
+        clean_urls: boolean;
     };
+    app_links: {
+        android: string;
+        ios: string;
+    };
+    custom_buttons: {
+        download_maps: { text: string; url: string; };
+        download_rules: { text: string; url: string; };
+    };
+    zrs_list: {
+        id: string;
+        name: string;
+        description: string;
+        map_embed_url: string;
+        map_link_url: string;
+    }[];
     guides: {
         name: string;
         type: string;
@@ -49,7 +64,6 @@ export interface SiteContent {
     };
 }
 
-
 export const content = siteData as SiteContent;
 
 export function getDictionary(lang: SupportedLanguage) {
@@ -59,9 +73,13 @@ export function getDictionary(lang: SupportedLanguage) {
 export function getGlobalContent() {
     return {
         videos: content.videos,
-        zrs_maps: content.zrs_maps,
+        zrs_list: content.zrs_list,
+        custom_buttons: content.custom_buttons,
+        app_links: content.app_links,
         guides: content.guides,
         restaurants: content.restaurants,
         accommodations: content.accommodations,
+        settings: content.settings || { debug_mode: false, storage_mode: 'github', clean_urls: true }, // Defaults safely
     };
 }
+

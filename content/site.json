@@ -111,19 +111,48 @@
         "https://www.youtube.com/watch?v=FPlbpgOT6YA",
         "https://www.youtube.com/watch?v=Ao6lvNifaiY"
     ],
-    "zrs_maps": {
-        "alto_serchio": {
-            "iframe_src": "https://www.google.com/maps/d/embed?mid=1WFV1KxacpD-mJybsI12QXm_cJWlsUNc&ehbc=2E312F",
-            "pdf_map": "https://garfagnanadream.it/wp-content/uploads/2025/08/mappa-zrs.pdf",
-            "pdf_rules": "https://garfagnanadream.it/wp-content/uploads/2025/08/regolamento-zrs-camporgiano.pdf"
+    "settings": {
+        "debug_mode": false,
+        "storage_mode": "github",
+        "clean_urls": true
+    },
+    "app_links": {
+        "android": "https://play.google.com/store/apps/details?id=com.hooking.app",
+        "ios": "https://apps.apple.com/it/app/hooking/id1541369796"
+    },
+    "custom_buttons": {
+        "download_maps": {
+            "text": "Scarica le mappe",
+            "url": "https://garfagnanadream.it/wp-content/uploads/2025/08/mappa-zrs.pdf"
         },
-        "isola_santa": {
-            "iframe_src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.9360315420263!2d10.308371675946677!3d44.06557927566239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5725dde1fcd93%3A0x8f48e9e9517eb508!2s55030%20Isola%20Santa%20LU!5e1!3m2!1sit!2sit!4v1739384862714!5m2!1sit!2sit"
-        },
-        "incubatoio": {
-            "iframe_src": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d482.08460626487613!2d10.446945396833318!3d44.12021659050346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sit!4v1741798284278!5m2!1sen!2sit"
+        "download_rules": {
+            "text": "Scarica il regolamento",
+            "url": "https://garfagnanadream.it/wp-content/uploads/2025/08/regolamento-zrs-camporgiano.pdf"
         }
     },
+    "zrs_list": [
+        {
+            "id": "alto_serchio",
+            "name": "ZRS Alto Serchio",
+            "description": "Classificazione a salmonidi, carattere torrentizio ideale per trota mediterranea autoctona. Avviamento di un incubatoio, tecnica del cocooning, obiettivo tutela e rusticità delle trote autoctone.",
+            "map_embed_url": "https://www.google.com/maps/d/embed?mid=1WFV1KxacpD-mJybsI12QXm_cJWlsUNc&ehbc=2E312F",
+            "map_link_url": "https://goo.gl/maps/example"
+        },
+        {
+            "id": "isola_santa",
+            "name": "ZRS Isola Santa",
+            "description": "Bacino artificiale alimentato dal torrente Turrite Secca, nel cuore delle Apuane. Borgo medievale che lambisce il bacino, ristoranti e punti di ristoro accessibili.",
+            "map_embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.9360315420263!2d10.308371675946677!3d44.06557927566239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5725dde1fcd93%3A0x8f48e9e9517eb508!2s55030%20Isola%20Santa%20LU!5e1!3m2!1sit!2sit!4v1739384862714!5m2!1sit!2sit",
+            "map_link_url": "https://goo.gl/maps/example2"
+        },
+        {
+            "id": "incubatoio",
+            "name": "Incubatoio",
+            "description": "Gestione per riproduzione artificiale della Trota Fario Mediterranea. Sede in località Casonza nel comune di Fosciandora.",
+            "map_embed_url": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d482.08460626487613!2d10.446945396833318!3d44.12021659050346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sit!4v1741798284278!5m2!1sen!2sit",
+            "map_link_url": "https://goo.gl/maps/example3"
+        }
+    ],
     "guides": [
         {
             "name": "Alessio Pericoli",

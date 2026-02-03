@@ -9,6 +9,7 @@ interface ListEditorProps {
     updateItems: (items: any[]) => void;
     template: any;
     folder: string;
+    storageMode?: 'github' | 'blob';
 }
 
 // Friendly Naming Mapping
@@ -32,11 +33,6 @@ const friendlyLabels: { [key: string]: string } = {
     "app-desc": "Descrizione App",
     "dove-title": "Titolo Dove Pescare",
     "dove-desc": "Descrizione Dove Pescare",
-    "download-maps": "Testo Download Mappe",
-    "download-rules": "Testo Download Regolamento",
-    "incubatoio-label": "Etichetta Incubatoio",
-    "incubatoio-title": "Titolo Incubatoio",
-    "open-maps": "Testo Apri Mappa",
     "chi-title": "Titolo Chi Siamo",
     "chi-desc1": "Chi Siamo Par. 1",
     "chi-desc2": "Chi Siamo Par. 2",
@@ -62,9 +58,6 @@ const friendlyLabels: { [key: string]: string } = {
     "acc-auto-content": "Testo Auto",
     "acc-aereo-content": "Testo Aereo",
     "acc-treno-content": "Testo Treno",
-    "zrs-alto-desc": "Descrizione ZRS Alto Serchio",
-    "zrs-isola-desc": "Descrizione ZRS Isola Santa",
-    "incubatoio-desc": "Descrizione Incubatoio"
 };
 
 const categories = {
@@ -72,7 +65,6 @@ const categories = {
     content: ['hero-title', 'hero-subtitle', 'app-title', 'app-desc', 'dove-title', 'dove-desc', 'chi-title', 'chi-desc1', 'chi-desc2', 'chi-desc3'],
     services: ['servizi-title', 'servizi-desc', 'tab-guide', 'tab-mangiare', 'tab-dormire', 'tab-altre', 'guide-fly', 'website', 'facebook-page', 'altre-title', 'altre-desc'],
     logistics: ['come-title', 'come-desc', 'acc-auto', 'acc-aereo', 'acc-treno', 'acc-auto-content', 'acc-aereo-content', 'acc-treno-content'],
-    labels: ['download-maps', 'download-rules', 'incubatoio-label', 'incubatoio-title', 'open-maps', 'zrs-alto-desc', 'zrs-isola-desc', 'incubatoio-desc', 'video-title']
 };
 
 export default function Dashboard() {
@@ -80,7 +72,7 @@ export default function Dashboard() {
     const [activeSection, setActiveSection] = useState('content');
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
-    const [stats, setStats] = useState<{ size_mb: string } | null>(null);
+    const [stats, setStats] = useState<{ size_mb: string, blob_size_mb?: string, gh_size_mb?: string } | null>(null);
 
     useEffect(() => {
         fetchContent();
@@ -90,15 +82,14 @@ export default function Dashboard() {
     const fetchContent = async () => {
         const res = await fetch('/api/content');
         const data = await res.json();
-        // Ensure seo object exists even if fetching legacy content
-        if (!data.seo) {
-            data.seo = {
-                title_template: "%s | Garfagnana Fishing",
-                default_description: "",
-                og_image: "",
-                keywords: ""
-            };
-        }
+
+        // Defaults if missing
+        if (!data.seo) data.seo = { title_template: "", default_description: "", og_image: "", keywords: "" };
+        if (!data.settings) data.settings = { debug_mode: false, storage_mode: 'github', clean_urls: true };
+        if (!data.zrs_list) data.zrs_list = [];
+        if (!data.custom_buttons) data.custom_buttons = { download_maps: { text: "Scarica mappe", url: "" }, download_rules: { text: "Scarica regolamento", url: "" } };
+        if (!data.app_links) data.app_links = { android: "", ios: "" };
+
         setContent(data);
         setLoading(false);
     };
@@ -140,19 +131,22 @@ export default function Dashboard() {
         { id: 'navigation', label: 'Menu & Navigazione', icon: 'fa-compass' },
         { id: 'services', label: 'Servizi & Info', icon: 'fa-info-circle' },
         { id: 'logistics', label: 'Logistica', icon: 'fa-map-signs' },
+        { id: 'zrs', label: 'Zone ZRS', icon: 'fa-water' },
         { id: 'guides', label: 'Guide di Pesca', icon: 'fa-user-friends' },
         { id: 'restaurants', label: 'Ristoranti', icon: 'fa-utensils' },
         { id: 'accommodations', label: 'Alloggi', icon: 'fa-bed' },
         { id: 'videos', label: 'Video Gallery', icon: 'fa-video' },
-        { id: 'seo', label: 'SEO Avanzato', icon: 'fa-search' },
+        { id: 'settings', label: 'Impostazioni Avanzate', icon: 'fa-cogs' },
     ];
+
+    const storageMode = content.settings.storage_mode;
 
     return (
         <div style={{ display: 'flex', minHeight: '100vh', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }}>
             {/* Sidebar */}
             <div style={{ width: '280px', background: '#1e293b', color: '#f1f5f9', display: 'flex', flexDirection: 'column', borderRight: '1px solid #334155' }}>
                 <div style={{ padding: '2rem', borderBottom: '1px solid #334155', background: '#0f172a' }}>
-                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600, margin: 0 }}>
+                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600, margin: 0, color: '#f1f5f9' }}>
                         <i className="fas fa-fish" style={{ marginRight: '10px', color: '#4ade80' }}></i>
                         Admin Panel
                     </h2>
@@ -172,7 +166,8 @@ export default function Dashboard() {
                 </nav>
 
                 <div style={{ padding: '1.5rem', borderTop: '1px solid #334155', background: '#0f172a', fontSize: '0.85rem', color: '#94a3b8' }}>
-                    <p><i className="fab fa-github"></i> Storage: {stats?.size_mb || '...'} MB</p>
+                    <p style={{ marginBottom: '0.5rem' }}><i className="fab fa-github"></i> GitHub: {stats?.gh_size_mb || stats?.size_mb || '...'} MB</p>
+                    <p><i className="fas fa-cloud"></i> Blob: {stats?.blob_size_mb || '0'} MB</p>
                 </div>
             </div>
 
@@ -217,12 +212,71 @@ export default function Dashboard() {
                         />
                     )}
 
+                    {activeSection === 'zrs' && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                            <div style={{ background: '#ecfdf5', padding: '1.5rem', borderRadius: '12px', border: '1px solid #6ee7b7' }}>
+                                <h3 style={{ margin: '0 0 1rem 0', color: '#065f46' }}>Gestione Download Mappe e Regolamenti</h3>
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                                    <div>
+                                        <label style={labelStyle}>Mappe Download Label</label>
+                                        <input
+                                            value={content.custom_buttons.download_maps.text}
+                                            onChange={e => setContent({ ...content, custom_buttons: { ...content.custom_buttons, download_maps: { ...content.custom_buttons.download_maps, text: e.target.value } } })}
+                                            style={inputStyle}
+                                        />
+                                        <label style={labelStyle}>Mappe PDF URL</label>
+                                        <input
+                                            value={content.custom_buttons.download_maps.url}
+                                            onChange={e => setContent({ ...content, custom_buttons: { ...content.custom_buttons, download_maps: { ...content.custom_buttons.download_maps, url: e.target.value } } })}
+                                            style={{ ...inputStyle, marginBottom: '0.5rem' }}
+                                        />
+                                        <ImageUploader
+                                            currentImage={content.custom_buttons.download_maps.url}
+                                            onImageChange={url => setContent({ ...content, custom_buttons: { ...content.custom_buttons, download_maps: { ...content.custom_buttons.download_maps, url } } })}
+                                            folder="docs"
+                                            storageMode={storageMode}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label style={labelStyle}>Regolamento Download Label</label>
+                                        <input
+                                            value={content.custom_buttons.download_rules.text}
+                                            onChange={e => setContent({ ...content, custom_buttons: { ...content.custom_buttons, download_rules: { ...content.custom_buttons.download_rules, text: e.target.value } } })}
+                                            style={inputStyle}
+                                        />
+                                        <label style={labelStyle}>Regolamento PDF URL</label>
+                                        <input
+                                            value={content.custom_buttons.download_rules.url}
+                                            onChange={e => setContent({ ...content, custom_buttons: { ...content.custom_buttons, download_rules: { ...content.custom_buttons.download_rules, url: e.target.value } } })}
+                                            style={{ ...inputStyle, marginBottom: '0.5rem' }}
+                                        />
+                                        <ImageUploader
+                                            currentImage={content.custom_buttons.download_rules.url}
+                                            onImageChange={url => setContent({ ...content, custom_buttons: { ...content.custom_buttons, download_rules: { ...content.custom_buttons.download_rules, url } } })}
+                                            folder="docs"
+                                            storageMode={storageMode}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ListEditor
+                                items={content.zrs_list}
+                                updateItems={(items) => setContent({ ...content, zrs_list: items })}
+                                template={{ id: 'new-zrs', name: 'Nuova ZRS', description: '', map_embed_url: '', map_link_url: '' }}
+                                folder="zrs"
+                                storageMode={storageMode}
+                            />
+                        </div>
+                    )}
+
                     {activeSection === 'guides' && (
                         <ListEditor
                             items={content.guides}
                             updateItems={(items) => setContent({ ...content, guides: items })}
                             template={{ name: '', type: 'Mosca', phone: '', email: '', instagram: '', image: '' }}
                             folder="guides"
+                            storageMode={storageMode}
                         />
                     )}
                     {activeSection === 'restaurants' && (
@@ -231,6 +285,7 @@ export default function Dashboard() {
                             updateItems={(items) => setContent({ ...content, restaurants: items })}
                             template={{ name: '', phone: '', address: '', website: '', image: '' }}
                             folder="restaurants"
+                            storageMode={storageMode}
                         />
                     )}
                     {activeSection === 'accommodations' && (
@@ -239,6 +294,7 @@ export default function Dashboard() {
                             updateItems={(items) => setContent({ ...content, accommodations: items })}
                             template={{ name: '', phone: '', address: '', website: '', image: '' }}
                             folder="accommodations"
+                            storageMode={storageMode}
                         />
                     )}
                     {activeSection === 'videos' && (
@@ -247,10 +303,10 @@ export default function Dashboard() {
                             updateVideos={(videos) => setContent({ ...content, videos })}
                         />
                     )}
-                    {activeSection === 'seo' && (
-                        <SeoEditor
-                            seo={content.seo}
-                            updateSeo={(seo) => setContent({ ...content, seo })}
+                    {activeSection === 'settings' && (
+                        <AdvancedSettingsEditor
+                            content={content}
+                            setContent={setContent}
                         />
                     )}
                 </div>
@@ -350,7 +406,7 @@ function TranslationEditor({ content, setContent, keys }: { content: SiteContent
     );
 }
 
-function ListEditor({ items, updateItems, template, folder }: ListEditorProps) {
+function ListEditor({ items, updateItems, template, folder, storageMode }: ListEditorProps) {
     const addItem = () => {
         updateItems([...items, { ...template }]);
     };
@@ -374,7 +430,7 @@ function ListEditor({ items, updateItems, template, folder }: ListEditorProps) {
             {items.map((item: any, idx: number) => (
                 <div key={idx} style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', borderBottom: '1px solid #f1f5f9', paddingBottom: '0.5rem' }}>
-                        <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#334155' }}>#{idx + 1} {item.name}</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#334155' }}>#{idx + 1} {item.name || item.id}</h3>
                         <button onClick={() => removeItem(idx)} style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer', fontSize: '0.9rem' }}>
                             <i className="fas fa-trash-alt"></i> Elimina
                         </button>
@@ -383,24 +439,35 @@ function ListEditor({ items, updateItems, template, folder }: ListEditorProps) {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
                         {Object.keys(template).map(field => field !== 'image' && (
                             <div key={field}>
-                                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', textTransform: 'capitalize', color: '#64748b' }}>{field}</label>
-                                <input
-                                    style={{ width: '100%', padding: '0.6rem', border: '1px solid #cbd5e1', borderRadius: '6px' }}
-                                    value={item[field]}
-                                    onChange={(e) => updateItem(idx, field, e.target.value)}
-                                />
+                                <label style={labelStyle}>{field.replace('_', ' ')}</label>
+                                {field === 'description' || field.includes('embed') ? (
+                                    <textarea
+                                        style={{ ...inputStyle, minHeight: '80px' }}
+                                        value={item[field]}
+                                        onChange={(e) => updateItem(idx, field, e.target.value)}
+                                    />
+                                ) : (
+                                    <input
+                                        style={inputStyle}
+                                        value={item[field]}
+                                        onChange={(e) => updateItem(idx, field, e.target.value)}
+                                    />
+                                )}
                             </div>
                         ))}
                     </div>
 
-                    <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '8px', border: '1px dashed #cbd5e1' }}>
-                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#64748b' }}>Immagine</label>
-                        <ImageUploader
-                            currentImage={item.image}
-                            onImageChange={(url) => updateItem(idx, 'image', url)}
-                            folder={folder}
-                        />
-                    </div>
+                    {template.hasOwnProperty('image') && (
+                        <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '8px', border: '1px dashed #cbd5e1' }}>
+                            <label style={{ ...labelStyle, marginBottom: '0.5rem' }}>Immagine</label>
+                            <ImageUploader
+                                currentImage={item.image}
+                                onImageChange={(url) => updateItem(idx, 'image', url)}
+                                folder={folder}
+                                storageMode={storageMode}
+                            />
+                        </div>
+                    )}
                 </div>
             ))}
             <button
@@ -478,69 +545,109 @@ function VideoEditor({ videos, updateVideos }: { videos: string[], updateVideos:
     );
 }
 
-function SeoEditor({ seo, updateSeo }: { seo: any, updateSeo: (s: any) => void }) {
-    const updateField = (field: string, val: string) => {
-        updateSeo({ ...seo, [field]: val });
+function AdvancedSettingsEditor({ content, setContent }: { content: SiteContent, setContent: any }) {
+    const { seo, settings, app_links } = content;
+
+    const updateSeo = (field: string, val: string) => {
+        setContent({ ...content, seo: { ...seo, [field]: val } });
+    };
+
+    const updateSettings = (field: string, val: any) => {
+        setContent({ ...content, settings: { ...settings, [field]: val } });
+    };
+
+    const updateAppLink = (field: string, val: string) => {
+        setContent({ ...content, app_links: { ...app_links, [field]: val } });
     };
 
     return (
-        <div style={{ background: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
-            <h3 style={{ marginTop: 0, marginBottom: '1.5rem', color: '#334155', borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem' }}>
-                <i className="fas fa-search" style={{ marginRight: '10px', color: '#f59e0b' }}></i>
-                Ottimizzazione SEO
-            </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
-            <div style={{ display: 'grid', gap: '1.5rem' }}>
-                <div>
-                    <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>
-                        Template Titolo Pagina
-                    </label>
-                    <input
-                        value={seo.title_template}
-                        onChange={(e) => updateField('title_template', e.target.value)}
-                        placeholder="%s | Garfagnana Fishing"
-                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #cbd5e1', borderRadius: '6px' }}
-                    />
-                    <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.25rem' }}>Usa %s dove verrà inserito il titolo della pagina corrente</p>
+            {/* General Settings */}
+            <div style={{ background: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+                <h3 style={{ marginTop: 0, marginBottom: '1.5rem', color: '#334155', borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem' }}>
+                    <i className="fas fa-cogs" style={{ marginRight: '10px', color: '#475569' }}></i>
+                    Configurazione Sistema
+                </h3>
+                <div style={{ display: 'grid', gap: '1.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: '#f8fafc', borderRadius: '8px' }}>
+                        <input
+                            type="checkbox"
+                            id="debug"
+                            checked={settings.debug_mode}
+                            onChange={e => updateSettings('debug_mode', e.target.checked)}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                        <div>
+                            <label htmlFor="debug" style={{ fontWeight: 600, display: 'block' }}>Debug Mode</label>
+                            <span style={{ fontSize: '0.85rem', color: '#64748b' }}>Abilita log dettagliati per lo sviluppo.</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style={labelStyle}>Modalità di Archiviazione (Storage)</label>
+                        <select
+                            value={settings.storage_mode}
+                            onChange={e => updateSettings('storage_mode', e.target.value)}
+                            style={inputStyle}
+                        >
+                            <option value="github">GitHub (Repository)</option>
+                            <option value="blob">Vercel Blob (Cloud)</option>
+                        </select>
+                        <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.5rem' }}>
+                            GitHub salva i file nel repo (gratis, versionato). Blob salva su Vercel Cloud (veloce, ma ha limiti di banda).
+                        </p>
+                    </div>
                 </div>
+            </div>
 
-                <div>
-                    <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>
-                        Descrizione Predefinita (Meta Description)
-                    </label>
-                    <textarea
-                        value={seo.default_description}
-                        onChange={(e) => updateField('default_description', e.target.value)}
-                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #cbd5e1', borderRadius: '6px', minHeight: '100px' }}
-                    />
+            {/* App Links */}
+            <div style={{ background: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+                <h3 style={{ marginTop: 0, marginBottom: '1.5rem', color: '#334155', borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem' }}>
+                    <i className="fas fa-mobile-alt" style={{ marginRight: '10px', color: '#3b82f6' }}></i>
+                    Link App Mobile
+                </h3>
+                <div style={{ display: 'grid', gap: '1rem' }}>
+                    <div>
+                        <label style={labelStyle}>Google Play Store URL</label>
+                        <input style={inputStyle} value={app_links.android} onChange={e => updateAppLink('android', e.target.value)} />
+                    </div>
+                    <div>
+                        <label style={labelStyle}>Apple App Store URL</label>
+                        <input style={inputStyle} value={app_links.ios} onChange={e => updateAppLink('ios', e.target.value)} />
+                    </div>
                 </div>
+            </div>
 
-                <div>
-                    <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>
-                        Immagine Social (Open Graph Image)
-                    </label>
-                    <input
-                        value={seo.og_image}
-                        onChange={(e) => updateField('og_image', e.target.value)}
-                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #cbd5e1', borderRadius: '6px', marginBottom: '0.5rem' }}
-                    />
-                    <ImageUploader
-                        currentImage={seo.og_image}
-                        onImageChange={(url) => updateField('og_image', url)}
-                        folder="hero"
-                    />
-                </div>
+            {/* SEO Settings */}
+            <div style={{ background: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+                <h3 style={{ marginTop: 0, marginBottom: '1.5rem', color: '#334155', borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem' }}>
+                    <i className="fas fa-search" style={{ marginRight: '10px', color: '#f59e0b' }}></i>
+                    Ottimizzazione SEO
+                </h3>
 
-                <div>
-                    <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>
-                        Keywords (Parole Chiave)
-                    </label>
-                    <input
-                        value={seo.keywords}
-                        onChange={(e) => updateField('keywords', e.target.value)}
-                        placeholder="pesca, garfagnana, trota..."
-                        style={{ width: '100%', padding: '0.75rem', border: '1px solid #cbd5e1', borderRadius: '6px' }}
-                    />
+                <div style={{ display: 'grid', gap: '1.5rem' }}>
+                    <div>
+                        <label style={labelStyle}>Title Template</label>
+                        <input style={inputStyle} value={seo.title_template} onChange={e => updateSeo('title_template', e.target.value)} />
+                    </div>
+                    <div>
+                        <label style={labelStyle}>Meta Description Default</label>
+                        <textarea style={inputStyle} value={seo.default_description} onChange={e => updateSeo('default_description', e.target.value)} />
+                    </div>
+                    <div>
+                        <label style={labelStyle}>OG Image</label>
+                        <ImageUploader
+                            currentImage={seo.og_image}
+                            onImageChange={(url) => updateSeo('og_image', url)}
+                            folder="hero"
+                            storageMode={settings.storage_mode}
+                        />
+                    </div>
+                    <div>
+                        <label style={labelStyle}>Parole Chiave</label>
+                        <input style={inputStyle} value={seo.keywords} onChange={e => updateSeo('keywords', e.target.value)} />
+                    </div>
                 </div>
             </div>
         </div>
@@ -562,3 +669,6 @@ const btnStyle = (active: boolean) => ({
     fontWeight: active ? 600 : 400,
     transition: 'all 0.2s'
 });
+
+const labelStyle = { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', textTransform: 'capitalize' as const, color: '#64748b' };
+const inputStyle = { width: '100%', padding: '0.6rem', border: '1px solid #cbd5e1', borderRadius: '6px' };

@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 export default function DovePescareSection({ dict }: { dict: TranslationDictionary }) {
     const [activePanel, setActivePanel] = useState<string | null>(null);
     const globalContent = getGlobalContent();
+    const { zrs_list, custom_buttons } = globalContent;
 
     const togglePanel = (panelId: string) => {
         setActivePanel((prev: string | null) => {
@@ -28,7 +29,16 @@ export default function DovePescareSection({ dict }: { dict: TranslationDictiona
 
     const closePanel = () => setActivePanel(null);
 
-    const zrsData = globalContent.zrs_maps;
+    // Fallback images based on index or ID if not present in item (assuming we might add image support to ZRS later, for now hardcode mapping or use logic)
+    // Actually, the current code used hardcoded images: /images/zones/zrs-alto-serchio-aerial.jpg, etc.
+    // I should probably map these or add them to the ZRS data model.
+    // Since I didn't add image to ZRS list data model in previous steps, I will use a helper map here.
+    const getImage = (id: string) => {
+        if (id === 'alto_serchio') return '/images/zones/zrs-alto-serchio-aerial.jpg';
+        if (id === 'isola_santa') return '/images/zones/zrs-isola-santa-aerial.jpg';
+        if (id === 'incubatoio') return '/images/zones/incubatoio-aerial.jpg';
+        return '/images/hero/hero-fishing.jpg'; // fallback
+    };
 
     return (
         <section className="section" id="dove-pescare" style={{ background: 'var(--color-bg-light)' }}>
@@ -49,109 +59,97 @@ export default function DovePescareSection({ dict }: { dict: TranslationDictiona
                     </AnimateOnScroll>
 
                     <AnimateOnScroll animation="fade-right" className="download-buttons">
-                        <a href={zrsData.alto_serchio.pdf_map} target="_blank" className="download-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                            </svg>
-                            <span>{dict['download-maps']}</span>
-                        </a>
-                        <a href={zrsData.alto_serchio.pdf_rules} target="_blank" className="download-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z" />
-                            </svg>
-                            <span>{dict['download-rules']}</span>
-                        </a>
+                        {custom_buttons?.download_maps?.url && (
+                            <a href={custom_buttons.download_maps.url} target="_blank" className="download-btn">
+                                <i className="fas fa-map" style={{ fontSize: '1.2rem' }}></i>
+                                <span>{custom_buttons.download_maps.text}</span>
+                            </a>
+                        )}
+
+                        {custom_buttons?.download_rules?.url && (
+                            <a href={custom_buttons.download_rules.url} target="_blank" className="download-btn">
+                                <i className="fas fa-book" style={{ fontSize: '1.2rem' }}></i>
+                                <span>{custom_buttons.download_rules.text}</span>
+                            </a>
+                        )}
                     </AnimateOnScroll>
                 </div>
 
                 {/* Grid ZRS Cards */}
                 <div className="grid">
-                    <AnimateOnScroll animation="zoom-in" className="card zrs-card" >
-                        <div role="button" tabIndex={0} onClick={() => togglePanel('alto-serchio')} onKeyDown={(e) => e.key === 'Enter' && togglePanel('alto-serchio')}>
-                            <div className="img-container" style={{ height: '200px' }}>
-                                <img src="/images/zones/zrs-alto-serchio-aerial.jpg" alt="Alto Serchio" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
+                    {zrs_list.map((zrs, idx) => (
+                        <AnimateOnScroll key={zrs.id} animation="zoom-in" delay={idx * 0.2} className="card zrs-card">
+                            <div
+                                role="button"
+                                tabIndex={0}
+                                onClick={() => togglePanel(zrs.id)}
+                                onKeyDown={(e) => e.key === 'Enter' && togglePanel(zrs.id)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <div className="img-container" style={{ height: '200px' }}>
+                                    {/* Ideally we add 'image' to ZRS model, but for now use helper */}
+                                    <img
+                                        src={getImage(zrs.id)}
+                                        alt={zrs.name}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }}
+                                    />
+                                </div>
+                                <div className="zrs-label">
+                                    <i className="fas fa-map-marker-alt pin-icon" style={{ marginRight: '8px' }}></i>
+                                    {zrs.name}
+                                </div>
                             </div>
-                            <div className="zrs-label">
-                                <svg className="pin-icon" viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                                </svg>
-                                ZRS Alto Serchio
-                            </div>
-                        </div>
-                    </AnimateOnScroll>
-
-                    <AnimateOnScroll animation="zoom-in" delay={0.2} className="card zrs-card">
-                        <div role="button" tabIndex={0} onClick={() => togglePanel('isola-santa')} onKeyDown={(e) => e.key === 'Enter' && togglePanel('isola-santa')}>
-                            <div className="img-container" style={{ height: '200px' }}>
-                                <img src="/images/zones/zrs-isola-santa-aerial.jpg" alt="Isola Santa" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
-                            </div>
-                            <div className="zrs-label">
-                                <svg className="pin-icon" viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                                </svg>
-                                ZRS Isola Santa
-                            </div>
-                        </div>
-                    </AnimateOnScroll>
-
-                    <AnimateOnScroll animation="zoom-in" delay={0.4} className="card zrs-card">
-                        <div role="button" tabIndex={0} onClick={() => togglePanel('incubatoio')} onKeyDown={(e) => e.key === 'Enter' && togglePanel('incubatoio')}>
-                            <div className="img-container" style={{ height: '200px' }}>
-                                <img src="/images/zones/incubatoio-aerial.jpg" alt="Incubatoio" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
-                            </div>
-                            <div className="zrs-label">
-                                <svg className="pin-icon" viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                                </svg>
-                                {dict['incubatoio-label']}
-                            </div>
-                        </div>
-                    </AnimateOnScroll>
+                        </AnimateOnScroll>
+                    ))}
                 </div>
 
                 {/* Panels */}
-                <div id="panel-alto-serchio" className={`zrs-panel ${activePanel === 'alto-serchio' ? 'active' : ''}`}>
-                    <div className="panel-controls">
-                        <button className="panel-control" onClick={closePanel}>✕</button>
-                    </div>
-                    <h3 className="text-primary">ZRS Alto Serchio</h3>
-                    <p>{dict['zrs-alto-desc']}</p>
-                    <h3 className="text-primary" style={{ marginTop: 'var(--spacing-md)' }}>
-                        <span>{dict['open-maps']}</span>
-                    </h3>
-                    <div className="map-container">
-                        <iframe src={zrsData.alto_serchio.iframe_src} width="100%" height="480"></iframe>
-                    </div>
-                </div>
+                {zrs_list.map((zrs) => (
+                    <div key={zrs.id} id={`panel-${zrs.id}`} className={`zrs-panel ${activePanel === zrs.id ? 'active' : ''}`}>
+                        <div className="panel-controls">
+                            <button className="panel-control" onClick={closePanel}>✕</button>
+                        </div>
+                        <h3 className="text-primary">{zrs.name}</h3>
+                        <p>{zrs.description}</p>
 
-                <div id="panel-isola-santa" className={`zrs-panel ${activePanel === 'isola-santa' ? 'active' : ''}`}>
-                    <div className="panel-controls">
-                        <button className="panel-control" onClick={closePanel}>✕</button>
-                    </div>
-                    <h3 className="text-primary">ZRS Isola Santa</h3>
-                    <p>{dict['zrs-isola-desc']}</p>
-                    <h3 className="text-primary" style={{ marginTop: 'var(--spacing-md)' }}>
-                        <span>{dict['open-maps']}</span>
-                    </h3>
-                    <div className="map-container">
-                        <iframe style={{ border: 0 }} src={zrsData.isola_santa.iframe_src} width="100%" height="450" allowFullScreen></iframe>
-                    </div>
-                </div>
+                        {zrs.map_link_url && (
+                            <div style={{ marginTop: 'var(--spacing-md)', marginBottom: '1rem' }}>
+                                <a
+                                    href={zrs.map_link_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '10px',
+                                        background: '#4285F4',
+                                        color: 'white',
+                                        padding: '0.6rem 1.2rem',
+                                        borderRadius: '30px',
+                                        textDecoration: 'none',
+                                        fontWeight: 600,
+                                        boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
+                                    }}
+                                >
+                                    <i className="fas fa-map-marked-alt"></i>
+                                    {dict['open-maps']}
+                                </a>
+                            </div>
+                        )}
 
-                <div id="panel-incubatoio" className={`zrs-panel ${activePanel === 'incubatoio' ? 'active' : ''}`}>
-                    <div className="panel-controls">
-                        <button className="panel-control" onClick={closePanel}>✕</button>
+                        <div className="map-container">
+                            <iframe
+                                style={{ border: 0 }}
+                                src={zrs.map_embed_url}
+                                width="100%"
+                                height="450"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </div>
-                    <h3 className="text-primary">{dict['incubatoio-title']}</h3>
-                    <p>{dict['incubatoio-desc']}</p>
-                    <h3 className="text-primary" style={{ marginTop: 'var(--spacing-md)' }}>
-                        <span>{dict['open-maps']}</span>
-                    </h3>
-                    <div className="map-container">
-                        <iframe style={{ border: 0 }} src={zrsData.incubatoio.iframe_src} width="100%" height="450" allowFullScreen></iframe>
-                    </div>
-                </div>
+                ))}
             </div>
         </section>
     );
 }
+
