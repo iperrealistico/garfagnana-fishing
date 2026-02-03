@@ -4,6 +4,13 @@ import { useState, useEffect } from 'react';
 import { SiteContent } from '@/lib/content';
 import ImageUploader from '@/components/admin/ImageUploader';
 
+interface ListEditorProps {
+    items: any[];
+    updateItems: (items: any[]) => void;
+    template: any;
+    folder: string;
+}
+
 export default function Dashboard() {
     const [content, setContent] = useState<SiteContent | null>(null);
     const [activeSection, setActiveSection] = useState('translations');
@@ -169,7 +176,7 @@ function TranslationEditor({ content, setContent }: { content: SiteContent, setC
     );
 }
 
-function ListEditor({ items, updateItems, template, folder }: any) {
+function ListEditor({ items, updateItems, template, folder }: ListEditorProps) {
     const addItem = () => {
         updateItems([...items, { ...template }]);
     };
