@@ -1,0 +1,307 @@
+{
+    "translations": {
+        "it": {
+            "prenota-nav": "Prenota online",
+            "dove-nav": "Dove pescare",
+            "chi-nav": "Chi siamo",
+            "video-nav": "I nostri video",
+            "servizi-nav": "Vitto, alloggio e guide",
+            "come-nav": "Come raggiungerci",
+            "hero-title": "Garfagnana Fishing",
+            "hero-subtitle": "Il posto in cui non sei mai stato e dove non vedrai l'ora di tornare",
+            "cta-dove": "Dove pescare",
+            "cta-chi": "Chi siamo",
+            "cta-vitto": "Vitto e alloggio",
+            "cta-video": "I nostri video",
+            "app-title": "Scarica l'app per prenotare",
+            "app-desc": "Prenota online scaricando l'app Hooking, ci trovi direttamente lì e puoi pagare con carta di credito!",
+            "dove-title": "Dove pescare in Garfagnana?",
+            "dove-desc": "Per gli appassionati di pesca il territorio della Garfagnana offre una miriade di corsi e specchi d'acqua che attraversa l'intera valle, dalle Alpi Apuane fino alle pendici dell'Appennino Tosco-Emiliano. Ambienti magici e incontaminati dove trascorrere del tempo a contatto con la natura più autentica praticando la propria passione. Per rendere questa esperienza più accessibile e indimenticabile ci sono a disposizione 2 zone a regolamento specifico. Trovate tutti i dettagli nelle schede che seguono.",
+            "download-maps": "Scarica le mappe",
+            "download-rules": "Scarica il regolamento",
+            "incubatoio-label": "Incubatoio",
+            "incubatoio-title": "Incubatoio",
+            "open-maps": "Apri su Google Maps",
+            "chi-title": "Cosa è Garfagnana Fishing?",
+            "chi-desc1": "Garfagnanafishing nasce dagli sforzi congiunti di Garfagnanadream.it, portale per la promozione multimediale del territorio e del Mosca Club Lucca, associazione di pescatori e appassionati da anni attiva a livello provinciale per la gestione e la conservazione dei tratti fluviali di maggior pregio.",
+            "chi-desc2": "L'idea nasce per colmare l'assenza sul territorio di una struttura in grado di occuparsi a livello professionale del settore turistico legato alla pesca. A oggi, infatti, è impossibile rimanere indifferenti di fronte ai risultati raggiunti da altri territori del nostro Paese, dove la pesca turistica contribuisce a interi indotti con numeri a 6 cifre.",
+            "chi-desc3": "Gli obbiettivi sono portare sul territorio una nuova consapevolezza nei confronti di questa risorsa e sensibilizzare sulla delicatezza e l'importanza degli ecosistemi teatro dell'attività di pesca.",
+            "video-title": "I nostri video, documentari e vlog!",
+            "servizi-title": "Scopri le nostre guide e i consigli per vitto e alloggio",
+            "servizi-desc": "In questa sezione troverete alcuni spunti per un soggiorno di qualità in Garfagnana e godervi i prodotti tipici della cucina locale. Per un'esperienza ancora più immersiva potete rivolgervi alle nostre guide di pesca, che potranno esaudire ogni vostro desiderio, portandovi oltre le nostre zone a regolamento specifico. La Garfagnana vi aspetta per una vacanza avventurosa e indimenticabile.",
+            "tab-guide": "GUIDE DI PESCA",
+            "tab-mangiare": "DOVE MANGIARE",
+            "tab-dormire": "DOVE DORMIRE",
+            "tab-altre": "ALTRE INFO",
+            "guide-fly": "Mosca",
+            "website": "Sito Web",
+            "facebook-page": "pagina Facebook",
+            "altre-title": "Scopri tantissime altre idee e servizi su Garfagnanadream.it",
+            "altre-desc": "Visita il portale turistico a 360° sulla Garfagnana: servizi turistici, idee viaggio, natura, sport e attività! Scopri con noi la verde valle della Garfagnana.",
+            "come-title": "Come raggiungerci per pescare in Garfagnana",
+            "come-desc": "Auto, treno e anche aereo. Scoprite tutte le indicazioni per raggiungere la Garfagnana nella nostra guida.",
+            "acc-auto": "In auto",
+            "acc-aereo": "In aereo",
+            "acc-treno": "In treno",
+            "acc-auto-content": "L'auto è l'opzione migliore per godersi alcune delle città più famose al mondo prima di immergersi nei territori incontaminati della Garfagnana. Da Firenze (1:30 h) è necessario proseguire in direzione Lucca, scegliendo l'uscita Lucca Est per un giro in centro e da qui si prosegue sulla SR445 per la Garfagnana. Stessa cosa per quanto riguarda Pisa (1 h), a meno che non si opti per la SS12 radd passante per San Giuliano Terme. Da Lucca (45 min), invece, è sufficiente seguire le indicazioni per la Garfagnana, mentre dalla Versilia (1 h) ci si possono godere due passi di montagna molto suggestivi: quello del Cipollaio e quello del Vestito, da imboccare rispettivamente in corrispondenza di Querceta e Massa. Si arriva anche direttamente da Modena (2 h), grazie alla SP72.",
+            "acc-aereo-content": "Grazie ai collegamenti degli aeroporti internazionali di Pisa e Firenze è possibile arrivare direttamente in queste città da tutta Europa (Lisbona, Valencia, Barcellona, Madrid, Francoforte, Monaco, Parigi, Londra, Amsterdam, Ginevra e non solo). Da qui si può proseguire in auto o in treno.",
+            "acc-treno-content": "Entrambi gli aeroporti sono collegati direttamente con le relative stazioni principali (Pisa Centrale – Firenze Santa Maria Novella). Le soluzioni a disposizione sono unicamente treni regionali che impiegano parecchio tempo per percorrere la tratta. Ci vogliono circa 1 ora e 30 da Pisa, 2 ore 45 da Firenze, 50 min da Lucca, 50 minuti dalla stazione di Aulla-Lunigiana e in media 1 ora e 30 dalla Versilia (Viareggio).",
+            "zrs-alto-desc": "Classificazione a salmonidi, carattere torrentizio ideale per trota mediterranea autoctona. Avviamento di un incubatoio, tecnica del cocooning, obiettivo tutela e rusticità delle trote autoctone.",
+            "zrs-isola-desc": "Bacino artificiale alimentato dal torrente Turrite Secca, nel cuore delle Apuane. Borgo medievale che lambisce il bacino, ristoranti e punti di ristoro accessibili.",
+            "incubatoio-desc": "Gestione per riproduzione artificiale della Trota Fario Mediterranea. Sede in località Casonza nel comune di Fosciandora."
+        },
+        "en": {
+            "prenota-nav": "Book online",
+            "dove-nav": "Where to fish",
+            "chi-nav": "About us",
+            "video-nav": "Our videos",
+            "servizi-nav": "Food, accommodation & guides",
+            "come-nav": "How to reach us",
+            "hero-title": "Garfagnana Fishing",
+            "hero-subtitle": "The place you've never been and where you can't wait to return",
+            "cta-dove": "Where to fish",
+            "cta-chi": "About us",
+            "cta-vitto": "Food & lodging",
+            "cta-video": "Our videos",
+            "app-title": "Download the app to book",
+            "app-desc": "Book online by downloading the Hooking app, find us directly there and pay by credit card!",
+            "dove-title": "Where to fish in Garfagnana?",
+            "dove-desc": "For fishing enthusiasts, the Garfagnana territory offers countless waterways crossing the entire valley, from the Apuan Alps to the Tuscan-Emilian Apennines. Magical and uncontaminated environments where you can spend time in contact with the most authentic nature while practicing your passion. To make this experience more accessible and unforgettable, there are 2 specific regulation zones available. Find all the details in the following cards.",
+            "download-maps": "Download maps",
+            "download-rules": "Download regulations",
+            "incubatoio-label": "Hatchery",
+            "incubatoio-title": "Hatchery",
+            "open-maps": "Open on Google Maps",
+            "chi-title": "What is Garfagnana Fishing?",
+            "chi-desc1": "Garfagnanafishing was born from the joint efforts of Garfagnanadream.it, a portal for multimedia promotion of the territory, and Mosca Club Lucca, an association of fishermen and enthusiasts active for years at provincial level in the management and conservation of the most valuable river sections.",
+            "chi-desc2": "The idea arose to fill the absence in the territory of a structure capable of dealing professionally with the tourism sector linked to fishing. Today, in fact, it is impossible to remain indifferent to the results achieved by other territories in our country, where fishing tourism contributes to entire industries with 6-figure numbers.",
+            "chi-desc3": "The objectives are to bring new awareness to the territory regarding this resource and raise awareness about the delicacy and importance of ecosystems that are the setting for fishing activities.",
+            "video-title": "Our videos, documentaries and vlogs!",
+            "servizi-title": "Discover our guides and tips for food and accommodation",
+            "servizi-desc": "In this section you will find some ideas for a quality stay in Garfagnana and enjoy the typical products of local cuisine. For an even more immersive experience, you can contact our fishing guides, who can fulfill your every wish, taking you beyond our specific regulation zones. Garfagnana awaits you for an adventurous and unforgettable vacation.",
+            "tab-guide": "FISHING GUIDES",
+            "tab-mangiare": "WHERE TO EAT",
+            "tab-dormire": "WHERE TO SLEEP",
+            "tab-altre": "OTHER INFO",
+            "guide-fly": "Fly",
+            "website": "Website",
+            "facebook-page": "Facebook page",
+            "altre-title": "Discover many other ideas and services on Garfagnanadream.it",
+            "altre-desc": "Visit the 360° tourist portal on Garfagnana: tourist services, travel ideas, nature, sports and activities! Discover the green valley of Garfagnana with us.",
+            "come-title": "How to reach us for fishing in Garfagnana",
+            "come-desc": "Car, train and even plane. Discover all directions to reach Garfagnana in our guide.",
+            "acc-auto": "By car",
+            "acc-aereo": "By plane",
+            "acc-treno": "By train",
+            "acc-auto-content": "The car is the best option to enjoy some of the most famous cities in the world before diving into the uncontaminated territories of Garfagnana. From Florence (1:30 h) you need to continue towards Lucca, choosing the Lucca Est exit for a tour of the center and from here continue on SR445 to Garfagnana. Same thing for Pisa (1 h), unless you opt for the SS12 passing through San Giuliano Terme. From Lucca (45 min), however, just follow the signs for Garfagnana, while from Versilia (1 h) you can enjoy two very suggestive mountain passes: Cipollaio and Vestito, to be taken respectively at Querceta and Massa. You can also arrive directly from Modena (2 h), thanks to SP72.",
+            "acc-aereo-content": "Thanks to the connections of the international airports of Pisa and Florence, it is possible to arrive directly in these cities from all over Europe (Lisbon, Valencia, Barcelona, Madrid, Frankfurt, Munich, Paris, London, Amsterdam, Geneva and more). From here you can continue by car or train.",
+            "acc-treno-content": "Both airports are directly connected to their respective main stations (Pisa Centrale – Firenze Santa Maria Novella). The only solutions available are regional trains that take a long time to travel the route. It takes about 1 hour and 30 from Pisa, 2 hours 45 from Florence, 50 min from Lucca, 50 minutes from Aulla-Lunigiana station and on average 1 hour and 30 from Versilia (Viareggio).",
+            "zrs-alto-desc": "Salmonid classification, torrential character ideal for native Mediterranean trout. Hatchery startup, cocooning technique, objective of protection and rusticity of native trout.",
+            "zrs-isola-desc": "Artificial basin fed by the Turrite Secca stream, in the heart of the Apuan Alps. Medieval village that touches the basin, restaurants and refreshment points accessible.",
+            "incubatoio-desc": "Management for artificial reproduction of Mediterranean Brown Trout. Headquarters in Casonza in the municipality of Fosciandora."
+        }
+    },
+    "videos": [
+        "https://www.youtube.com/watch?v=FPlbpgOT6YA",
+        "https://www.youtube.com/watch?v=Ao6lvNifaiY"
+    ],
+    "zrs_maps": {
+        "alto_serchio": {
+            "iframe_src": "https://www.google.com/maps/d/embed?mid=1WFV1KxacpD-mJybsI12QXm_cJWlsUNc&ehbc=2E312F",
+            "pdf_map": "https://garfagnanadream.it/wp-content/uploads/2025/08/mappa-zrs.pdf",
+            "pdf_rules": "https://garfagnanadream.it/wp-content/uploads/2025/08/regolamento-zrs-camporgiano.pdf"
+        },
+        "isola_santa": {
+            "iframe_src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.9360315420263!2d10.308371675946677!3d44.06557927566239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5725dde1fcd93%3A0x8f48e9e9517eb508!2s55030%20Isola%20Santa%20LU!5e1!3m2!1sit!2sit!4v1739384862714!5m2!1sit!2sit"
+        },
+        "incubatoio": {
+            "iframe_src": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d482.08460626487613!2d10.446945396833318!3d44.12021659050346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sit!4v1741798284278!5m2!1sen!2sit"
+        }
+    },
+    "guides": [
+        {
+            "name": "Alessio Pericoli",
+            "type": "Mosca",
+            "phone": "339 4623740",
+            "email": "pericolialessio@outlook.it",
+            "instagram": "https://www.instagram.com/alessio_pericoli/",
+            "image": "/images/guides/guide-alessio-pericoli.jpg"
+        },
+        {
+            "name": "Gabriele Marchi",
+            "type": "Spinning",
+            "phone": "349 455 0412",
+            "email": "markigi@icloud.com",
+            "instagram": "https://www.instagram.com/gm_fishingguide/",
+            "image": "/images/guides/guide-gabriele-marchi.jpg"
+        },
+        {
+            "name": "Isaia Bertolacci",
+            "type": "Mosca",
+            "phone": "349 1497863",
+            "email": "isaiabertolacci41@gmail.com",
+            "instagram": "https://www.instagram.com/isaia_fly_fishing/",
+            "image": "/images/guides/guide-isaia-bertolacci.jpg"
+        },
+        {
+            "name": "Lorenzo Focacci",
+            "type": "Spinning",
+            "phone": "347 0415404",
+            "email": "lorenzo.focacci@gmail.com",
+            "instagram": "https://www.instagram.com/lorefoca86/",
+            "image": "/images/guides/guide-lorenzo-focacci.jpg"
+        },
+        {
+            "name": "Roberto Baldini",
+            "type": "Mosca",
+            "phone": "+39 329 4917565",
+            "email": "rb.baldini@alice.it",
+            "instagram": "https://www.instagram.com/bob.baldini/",
+            "image": "/images/guides/guide-roberto-baldini.jpg"
+        }
+    ],
+    "restaurants": [
+        {
+            "name": "Ristorante Il Baretto",
+            "phone": "0583 639136",
+            "address": "Via Farini 5, Castelnuovo di Garfagnana",
+            "website": "https://www.tripadvisor.it/Restaurant_Review-g676357-d2723596-Reviews-Ristorante_Il_Baretto-Castelnuovo_di_Garfagnana_Province_of_Lucca_Tuscany.html",
+            "image": "/images/restaurants/ristorante-baretto.jpg"
+        },
+        {
+            "name": "La Bottega del Fattore 2",
+            "phone": "0583 600465",
+            "address": "Via Giuseppe Garibaldi, Camporgiano",
+            "website": "https://www.labottegadelfattoredue.com/",
+            "image": "/images/restaurants/bottega-fattore.jpg"
+        },
+        {
+            "name": "Davy's Cafe Pizza & Restaurant",
+            "phone": "0583 62179",
+            "address": "Via Francesco Azzi 1, Castelnuovo di Garfagnana",
+            "website": "",
+            "image": "/images/restaurants/davys-cafe.jpg"
+        },
+        {
+            "name": "Panigacceria Lo Scalone",
+            "phone": "333 181 7031",
+            "address": "Via Alberto Bertolini 9, Camporgiano",
+            "website": "https://panigaccerialoscalone.eatbu.com/?lang=it",
+            "image": "/images/restaurants/panigacceria-scalone.jpg"
+        },
+        {
+            "name": "Cantina Bravi",
+            "phone": "340 662 9325",
+            "address": "Località Polla 17, Camporgiano",
+            "website": "https://www.vinodellagarfagnana.com/",
+            "image": "/images/restaurants/cantina-bravi.jpg"
+        },
+        {
+            "name": "Borgo Biaia",
+            "phone": "334 678 8207",
+            "address": "Località Biaia 1, Camporgiano",
+            "website": "https://www.borgobiaia.it/",
+            "image": "/images/restaurants/borgo-biaia.jpg"
+        },
+        {
+            "name": "Il Prisco - La Bottega di Pontardeto",
+            "phone": "0583 639581",
+            "address": "Località Pontardeto, Pieve Fosciana",
+            "website": "https://www.facebook.com/agriturismoventuro.prisco/?locale=it_IT",
+            "image": "/images/restaurants/il-prisco.jpg"
+        },
+        {
+            "name": "Agriturismo il Venuturo",
+            "phone": "334 973 9354",
+            "address": "Via Madonna della Tosse, Castelnuovo di Garfagnana",
+            "website": "https://www.agriturismoventuro.com/",
+            "image": "/images/restaurants/agriturismo-venturo.jpg"
+        },
+        {
+            "name": "Osteria Le Verrucole",
+            "phone": "333 940 6560",
+            "address": "Via Alpe 2, San Romano in Garfagnana",
+            "website": "https://www.facebook.com/osteriaverrucole",
+            "image": "/images/restaurants/osteria-verrucole.jpg"
+        },
+        {
+            "name": "Osteria Senso Unico",
+            "phone": "353 320 4810",
+            "address": "Via Roma 1, Castiglione di Garfagnana",
+            "website": "https://www.facebook.com/profile.php?id=61551371435867",
+            "image": "/images/restaurants/osteria-senso-unico.jpg"
+        },
+        {
+            "name": "Osteria Vecchio Mulino",
+            "phone": "0583 62192",
+            "address": "Via Vittorio Emanuele 12, Castelnuovo di Garfagnana",
+            "website": "https://www.facebook.com/vecchiomulino1985/?locale=it_IT",
+            "image": "/images/restaurants/osteria-vecchio-mulino.jpg"
+        },
+        {
+            "name": "Al Teatro Laboratorio del Gusto",
+            "phone": "324 994 5918",
+            "address": "Via Roma 31, Castelnuovo di Garfagnana",
+            "website": "https://www.alteatrolaboratoriodelgusto.com/home/",
+            "image": "/images/restaurants/al-teatro.jpg"
+        }
+    ],
+    "accommodations": [
+        {
+            "name": "Agriturismo B&B il Pradicciolo",
+            "phone": "340 904 0277",
+            "address": "Via Francesco Azzi 15/a, Castelnuovo di Garfagnana",
+            "website": "https://www.ilpradicciolo.it/",
+            "image": "/images/accommodations/bb-pradicciolo.jpg"
+        },
+        {
+            "name": "Rocca di Camporgiano",
+            "phone": "+39 3472270512",
+            "address": "Via della Rocca 2, Camporgiano",
+            "website": "https://laroccadicamporgiano.it/",
+            "image": "/images/accommodations/rocca-camporgiano.jpg"
+        },
+        {
+            "name": "La Collina dei Franchi",
+            "phone": "+39 348 2246135",
+            "address": "Loc Termini, Camporgiano",
+            "website": "https://www.lacollinadeifranchi.it/",
+            "image": "/images/accommodations/collina-franchi.jpg"
+        },
+        {
+            "name": "Agriturismo il Venturo",
+            "phone": "0583 65605",
+            "address": "Via Madonna della Tosse, Castelnuovo di Garfagnana",
+            "website": "https://www.agriturismoventuro.com/",
+            "image": "/images/accommodations/agriturismo-venturo.jpg"
+        },
+        {
+            "name": "Agriturismo la Palazzina",
+            "phone": "0583 62631",
+            "address": "Loc. La Palazzina, Antisciana",
+            "website": "https://www.lapalazzina.info/",
+            "image": "/images/accommodations/agriturismo-palazzina.jpg"
+        },
+        {
+            "name": "Agriturismo Mulin del Rancone",
+            "phone": "333 337 6377",
+            "address": "Località Rancone, Camporgiano",
+            "website": "https://www.facebook.com/mulindelrancone/?locale=it_IT",
+            "image": "/images/accommodations/mulin-rancone.jpg"
+        },
+        {
+            "name": "Hotel la Lanterna",
+            "phone": "0583 639364",
+            "address": "Località alle Monache 300, Castelnuovo di Garfagnana",
+            "website": "https://hotelristorantelalanterna.com/",
+            "image": "/images/accommodations/hotel-lanterna.jpg"
+        },
+        {
+            "name": "Villa Raffaelli",
+            "phone": "347 135 2489",
+            "address": "Via Nicola Raffaelli 2, Fosciandora",
+            "website": "https://villaraffaelli.it/",
+            "image": "/images/accommodations/villa-raffaelli.jpg"
+        }
+    ]
+}
