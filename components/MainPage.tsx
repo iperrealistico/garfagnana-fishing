@@ -8,6 +8,7 @@ import VideoSection from './VideoSection';
 import ServiziSection from './ServiziSection';
 import ComeRaggiungerciSection from './ComeRaggiungerciSection';
 import LanguageSwitcher from './LanguageSwitcher';
+import Sponsors from './Sponsors';
 
 export default function MainPage({ dict, lang }: { dict: TranslationDictionary, lang: 'it' | 'en' }) {
     return (
@@ -22,6 +23,7 @@ export default function MainPage({ dict, lang }: { dict: TranslationDictionary, 
                 <ServiziSection dict={dict} />
                 <ComeRaggiungerciSection dict={dict} />
             </main>
+            <Sponsors />
             <LanguageSwitcher currentLang={lang} />
         </>
     );
