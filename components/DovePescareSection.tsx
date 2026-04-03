@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { TranslationDictionary, getGlobalContent } from '@/lib/content';
 import AnimateOnScroll from './AnimateOnScroll';
-import { cn } from '@/lib/utils';
 
 export default function DovePescareSection({ dict }: { dict: TranslationDictionary }) {
     const [activePanel, setActivePanel] = useState<string | null>(null);
@@ -28,17 +27,6 @@ export default function DovePescareSection({ dict }: { dict: TranslationDictiona
     };
 
     const closePanel = () => setActivePanel(null);
-
-    // Fallback images based on index or ID if not present in item (assuming we might add image support to ZRS later, for now hardcode mapping or use logic)
-    // Actually, the current code used hardcoded images: /images/zones/zrs-alto-serchio-aerial.jpg, etc.
-    // I should probably map these or add them to the ZRS data model.
-    // Since I didn't add image to ZRS list data model in previous steps, I will use a helper map here.
-    const getImage = (id: string) => {
-        if (id === 'alto_serchio') return '/images/zones/zrs-alto-serchio-aerial.jpg';
-        if (id === 'isola_santa') return '/images/zones/zrs-isola-santa-aerial.jpg';
-        if (id === 'incubatoio') return '/images/zones/incubatoio-aerial.jpg';
-        return '/images/hero/hero-fishing.jpg'; // fallback
-    };
 
     return (
         <section className="section" id="dove-pescare" style={{ background: 'var(--color-bg-light)' }}>
@@ -89,7 +77,7 @@ export default function DovePescareSection({ dict }: { dict: TranslationDictiona
                                 <div className="img-container" style={{ height: '200px' }}>
                                     {/* Ideally we add 'image' to ZRS model, but for now use helper */}
                                     <img
-                                        src={getImage(zrs.id)}
+                                        src={zrs.image}
                                         alt={zrs.name}
                                         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }}
                                     />

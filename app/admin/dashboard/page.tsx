@@ -263,7 +263,7 @@ export default function Dashboard() {
                             <ListEditor
                                 items={content.zrs_list}
                                 updateItems={(items) => setContent({ ...content, zrs_list: items })}
-                                template={{ id: 'new-zrs', name: 'Nuova ZRS', description: '', map_embed_url: '', map_link_url: '' }}
+                                template={{ id: 'new-zrs', name: 'Nuova ZRS', description: '', map_embed_url: '', map_link_url: '', image: '' }}
                                 folder="zrs"
                                 storageMode={storageMode}
                             />

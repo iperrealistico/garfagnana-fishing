@@ -33,6 +33,7 @@ export interface SiteContent {
         description: string;
         map_embed_url: string;
         map_link_url: string;
+        image?: string;
     }[];
     guides: {
         name: string;
