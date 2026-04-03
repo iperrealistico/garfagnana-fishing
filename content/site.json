@@ -53,7 +53,6 @@
             "acc-aereo-content": "Grazie ai collegamenti degli aeroporti internazionali di Pisa e Firenze è possibile arrivare direttamente in queste città da tutta Europa (Lisbona, Valencia, Barcellona, Madrid, Francoforte, Monaco, Parigi, Londra, Amsterdam, Ginevra e non solo). Da qui si può proseguire in auto o in treno.",
             "acc-treno-content": "Entrambi gli aeroporti sono collegati direttamente con le relative stazioni principali (Pisa Centrale – Firenze Santa Maria Novella). Le soluzioni a disposizione sono unicamente treni regionali che impiegano parecchio tempo per percorrere la tratta. Ci vogliono circa 1 ora e 30 da Pisa, 2 ore 45 da Firenze, 50 min da Lucca, 50 minuti dalla stazione di Aulla-Lunigiana e in media 1 ora e 30 dalla Versilia (Viareggio).",
             "zrs-alto-desc": "Classificazione a salmonidi, carattere torrentizio ideale per trota mediterranea autoctona. Avviamento di un incubatoio, tecnica del cocooning, obiettivo tutela e rusticità delle trote autoctone.",
-            "zrs-isola-desc": "Bacino artificiale alimentato dal torrente Turrite Secca, nel cuore delle Apuane. Borgo medievale che lambisce il bacino, ristoranti e punti di ristoro accessibili.",
             "incubatoio-desc": "Gestione per riproduzione artificiale della Trota Fario Mediterranea. Sede in località Casonza nel comune di Fosciandora."
         },
         "en": {
@@ -103,7 +102,6 @@
             "acc-aereo-content": "Thanks to the connections of the international airports of Pisa and Florence, it is possible to arrive directly in these cities from all over Europe (Lisbon, Valencia, Barcelona, Madrid, Frankfurt, Munich, Paris, London, Amsterdam, Geneva and more). From here you can continue by car or train.",
             "acc-treno-content": "Both airports are directly connected to their respective main stations (Pisa Centrale – Firenze Santa Maria Novella). The only solutions available are regional trains that take a long time to travel the route. It takes about 1 hour and 30 from Pisa, 2 hours 45 from Florence, 50 min from Lucca, 50 minutes from Aulla-Lunigiana station and on average 1 hour and 30 from Versilia (Viareggio).",
             "zrs-alto-desc": "Salmonid classification, torrential character ideal for native Mediterranean trout. Hatchery startup, cocooning technique, objective of protection and rusticity of native trout.",
-            "zrs-isola-desc": "Artificial basin fed by the Turrite Secca stream, in the heart of the Apuan Alps. Medieval village that touches the basin, restaurants and refreshment points accessible.",
             "incubatoio-desc": "Management for artificial reproduction of Mediterranean Brown Trout. Headquarters in Casonza in the municipality of Fosciandora."
         }
     },
@@ -137,13 +135,6 @@
             "description": "Classificazione a salmonidi, carattere torrentizio ideale per trota mediterranea autoctona. Avviamento di un incubatoio, tecnica del cocooning, obiettivo tutela e rusticità delle trote autoctone.",
             "map_embed_url": "https://www.google.com/maps/d/embed?mid=1WFV1KxacpD-mJybsI12QXm_cJWlsUNc&ehbc=2E312F",
             "map_link_url": "https://goo.gl/maps/example"
-        },
-        {
-            "id": "isola_santa",
-            "name": "ZRS Isola Santa",
-            "description": "Bacino artificiale alimentato dal torrente Turrite Secca, nel cuore delle Apuane. Borgo medievale che lambisce il bacino, ristoranti e punti di ristoro accessibili.",
-            "map_embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.9360315420263!2d10.308371675946677!3d44.06557927566239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5725dde1fcd93%3A0x8f48e9e9517eb508!2s55030%20Isola%20Santa%20LU!5e1!3m2!1sit!2sit!4v1739384862714!5m2!1sit!2sit",
-            "map_link_url": "https://goo.gl/maps/example2"
         },
         {
             "id": "incubatoio",
